@@ -123,7 +123,7 @@ const getFiltered = async () => {
         const result = await fetch("https://jsonplaceholder.typicode.com/todos")
         const getJsn = await result.json()
         const filteredResult = getJsn.filter((item) => item.completed)
-        const mapFilterResult = filteredResult.map((item) => new Todo(item.id , item.title , item.completed))
+        const mapFilterResult = filteredResult.map((item) => new Todo(item.id , item.title , item.completed))  // aqac ver movifiqre saxeli // 
         console.log(mapFilterResult)
     }
     catch(error){
