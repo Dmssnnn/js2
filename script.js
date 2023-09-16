@@ -61,6 +61,7 @@ class Post {
 }
 
 const getSomething = async () => {
+    //vici cudi saxelia ar momafqirda araferi // 
     try {
         const result = await fetch("https://jsonplaceholder.typicode.com/posts")
         const getJsn = await result.json();
