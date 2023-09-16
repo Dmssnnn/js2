@@ -1,5 +1,5 @@
-// 1. მიიღეთ მომხმარებლების სია https://jsonplaceholder.typicode.com/users-დან
-// და ამოიღეთ მხოლოდ მომხმარებლის სახელები მასივში.
+// // 1. მიიღეთ მომხმარებლების სია https://jsonplaceholder.typicode.com/users-დან
+// // და ამოიღეთ მხოლოდ მომხმარებლის სახელები მასივში.
 
 
 
@@ -9,8 +9,8 @@
            const result = await fetch("https://jsonplaceholder.typicode.com/users")
               const getJson = await result.json();
 
-                  const getOnlyNames = emptyMassive.push(getJson.map(item => item.name))
-           console.log(emptyMassive) 
+                 emptyMassive.push(getJson.map(item => item.name))
+                console.log(emptyMassive) 
         }
     catch{
          return("error")
@@ -20,9 +20,9 @@ getOnlyNames()
 
 
 
-// 2. შექმენით კლასი Car,რომელშიც აღწერილი იქნება:მოდელის, კომპანია,
-// და წელი. შექმენით ამ კლასში ფუნქცია getCarDetails, რომელიც აბრუნებს
-// მანქანის დეტალების შემაჯამებელ სტრიქონს.
+// // 2. შექმენით კლასი Car,რომელშიც აღწერილი იქნება:მოდელის, კომპანია,
+// // და წელი. შექმენით ამ კლასში ფუნქცია getCarDetails, რომელიც აბრუნებს
+// // მანქანის დეტალების შემაჯამებელ სტრიქონს.
 
 
 
@@ -64,7 +64,8 @@ const getSomething = async () => {
     try {
         const result = await fetch("https://jsonplaceholder.typicode.com/posts")
         const getJsn = await result.json();
-        const newArr = getJsn.map(({ id , title , body }) => new Post(id , title , body ));
+        console.log(getJsn)
+        const newArr = getJsn.map((item) => new Post(item.id , item.title , item.body ));
         console.log(newArr)
     }
     catch(error) {
@@ -103,3 +104,29 @@ console.log(result)
 
 
 //5 
+
+// 5.ამ Todo API-დან https://jsonplaceholder.typicode.com/todos,
+// შექმენით კლასი Todo,რომელშიც აღწერილი მექნება: ID, title და completed. 
+// შემდეგ გაფილტრეთ მხოლოდ დასრულებული სამუშაოები Todo ობიექტების მასივში.
+
+class Todo {
+    constructor( id , title , completed){
+        this.id = id;
+        this.title = title;
+        this.completed = completed;
+    }
+}
+
+const getFiltered = async () => {
+    try{
+        const result = await fetch("https://jsonplaceholder.typicode.com/todos")
+        const getJsn = await result.json()
+        const filteredResult = getJsn.filter((item) => item.completed)
+        const mapFilterResult = filteredResult.map((item) => new Todo(item.id , item.title , item.completed))
+        console.log(mapFilterResult)
+    }
+    catch(error){
+        console.log(error,"ERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR")
+    }
+}
+getFiltered()
